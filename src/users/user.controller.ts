@@ -6,21 +6,20 @@ import { CreateUserDto } from './dto/user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Post()
-  @UsePipes(new ValidationPipe({ whitelist: true })) // Valida automáticamente el DTO 
-                                                    // ayuda para que no entren na que ver en la DB
+  @Post('/user/create')
+  @UsePipes(new ValidationPipe({ whitelist: true }))
+                                                   
   async createUser(@Body() createUserDto: CreateUserDto) {
-    return this.userService.createUser(
-      createUserDto.name,
-      createUserDto.email,
-      createUserDto.password,
-    );
+    return this.userService.createUserNoPassword(createUserDto.name, createUserDto.email);
   }
 
-  @Get()
-  async getUsers() {
-    return this.userService.getAllUsers();
+  @Get('/login/:email')
+  async loginUser(@Body() email: string) {
+    return this.userService.loginUser(email);
   }
 
-
+  @Get('/user/:email')
+  async getUser(@Body() email: string) {
+    return this.userService.getUserByEmail(email);
+  }
 }
