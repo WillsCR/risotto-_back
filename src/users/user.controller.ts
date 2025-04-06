@@ -10,12 +10,7 @@ export class UserController {
   @UsePipes(new ValidationPipe({ whitelist: true }))
                                                    
   async createUser(@Body() createUserDto: CreateUserDto) {
-    return this.userService.createUserNoPassword(createUserDto.name, createUserDto.email);
-  }
-
-  @Get('/login/:email')
-  async loginUser(@Body() email: string) {
-    return this.userService.loginUser(email);
+    return this.userService.getUserOrCreate(createUserDto.name, createUserDto.email);
   }
 
   @Get('/user/:email')
