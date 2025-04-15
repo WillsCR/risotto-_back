@@ -7,8 +7,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post('/user/create')
-  @UsePipes(new ValidationPipe({ whitelist: true }))
-                                                   
+  @UsePipes(new ValidationPipe({ whitelist: true }))                                                  
   async createUser(@Body() createUserDto: CreateUserDto) {
     return this.userService.getUserOrCreate(createUserDto.name, createUserDto.email);
   }
