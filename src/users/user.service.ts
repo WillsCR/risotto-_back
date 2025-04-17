@@ -12,32 +12,37 @@ export class UserService {
 
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-  async createUserNoPassword(name: string, email: string): Promise<User> {
-    const type = this.determineUserType(email); 
-    const user = new this.userModel({ name, email, type });
-    return user.save();
+ // En tu UserService
+private determineUserType(email: string): string {
+  if (email.endsWith('@alumnos.ucn.cl')) {
+    return 'Estudiante';
+  } else if (email.endsWith('@ucn.cl') || email.endsWith('@ce.ucn.cl')) {
+    return 'Docente';
+  } else {
+    throw new Error('Correo no válido para registro');
   }
-  
-  private determineUserType(email: string): string {
-    if (email.endsWith('@alumnos.ucn.cl')) {
-      return 'Estudiante';
-    } else if (email.endsWith('@ucn.cl') || email.endsWith('@ce.ucn.cl')) {
-      return 'Docente';
-    } else {
-      throw new Error('Correo no válido para registro'); 
-    }
+}
+
+async getUserOrCreate( name : string, email: string): Promise<User> {
+  console.log('Email recibido en getUserOrCreate:', email); // <--- LOG
+  const ifUser = await this.userModel.findOne({ email }).exec();
+  if (ifUser) {
+    return ifUser;
+  } else {
+    return this.createUserNoPassword(name, email);
   }
+}
 
-
-  async getUserOrCreate( name : string, email: string): Promise<User> {
-    const ifUser = await this.userModel.findOne({ email }).exec();
-    if (ifUser) {
-      return ifUser;
-    } else {
-      return this.createUserNoPassword(name, email);
-    }
-  }
-
+async createUserNoPassword(name: string, email: string): Promise<UserDocument> {
+  console.log('Email recibido en createUserNoPassword:', email); // <--- LOG
+  const userType = this.determineUserType(email);
+  const newUser = new this.userModel({
+    name,
+    email,
+    type: userType,
+  });
+  return newUser.save();
+}
   async loginUser(email: string): Promise<User | null> {
     const user = await this.userModel.findOne({ email }).exec();
     return user || null; 

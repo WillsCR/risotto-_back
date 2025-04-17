@@ -2,13 +2,13 @@ import { IsEmail, IsNotEmpty, MinLength, Matches, IsOptional } from 'class-valid
 
 export class CreateUserDto {
   @IsNotEmpty()
-  name: string;
+  name!: string;
 
   @IsEmail()
   @Matches(/@(alumnos\.ucn\.cl|ucn\.cl|ce\.ucn\.cl)$/, { 
     message: 'El correo debe pertenecer a un dominio permitido (@alumnos.ucn.cl, @ucn.cl, @ce.ucn.cl)' 
   })
-  email: string;
+  email!: string;
 
   @IsOptional() 
   @MinLength(6, { message: 'La contraseña debe tener al menos 6 caracteres' })
