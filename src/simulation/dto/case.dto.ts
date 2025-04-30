@@ -6,6 +6,7 @@ import {
   ValidateNested,
   IsNumber,
   IsObject,
+  Matches,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -136,6 +137,12 @@ export class CreateCaseDto {
   @IsString()
   titulo: string;
 
+  @IsNotEmpty() 
+  @Matches(/(APS|Urgencia|Hospitario)/,{
+    message: 'El tipo de caso debe ser APS, Urgencia o Hospitario'
+  })
+  tipo_caso: string;
+  
   @IsNotEmpty()
   @ValidateNested()
   @Type(() => ContextoInicialDto)

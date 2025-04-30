@@ -124,6 +124,9 @@ export class Case {
   @Prop({ required: true })
   titulo: string;
 
+  @Prop({ required: true , match: /(APS|Urgencia|Hospitario)/})
+  tipo_caso: string;
+
   @Prop({ type: ContextoInicialSchema, required: true })
   contexto_inicial: ContextoInicial;
 
