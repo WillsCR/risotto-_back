@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, UsePipes, ValidationPipe } from '@nestjs/c
 import { SimulationService } from './simulation.service';
 import { Case } from './schema/case.scheme';
 import { CreateCaseDto } from "./dto/case.dto";
+import { Param } from '@nestjs/common';
 
 @Controller('simulation')
 export class SimulationController{
@@ -17,4 +18,9 @@ export class SimulationController{
     async getCases(): Promise<Case[]> {
         return this.simulationService.getCases();
     }   
+
+    @Get('/case/:id')
+    async getCaseById(@Param('id') id: string): Promise<Case> {
+        return this.simulationService.getCaseById(id);
+    }
 }
