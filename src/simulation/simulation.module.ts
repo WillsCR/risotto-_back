@@ -4,7 +4,6 @@ import { Case,CaseSchema } from "./schema/case.scheme";
 import { SimulationService } from "./simulation.service";
 import { SimulationController } from "./simulation.controller";
 
-
 @Module({
     imports: [MongooseModule.forFeature([{name: Case.name , schema:CaseSchema}])],
     controllers:[SimulationController],

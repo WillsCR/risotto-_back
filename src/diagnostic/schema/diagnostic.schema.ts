@@ -17,7 +17,7 @@ export class Diagnostic {
     diagnostic:string   
 
 
-    @Prop({required:true}) //NO SE SI DESEA TENER LAS INTERRACCIONES QUE REALIZO EL USUARIO
+    @Prop({required:true}) 
     case_info: string
 }
 
