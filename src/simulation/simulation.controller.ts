@@ -3,14 +3,14 @@ import { SimulationService } from './simulation.service';
 import { Case } from './schema/case.scheme';
 import { CreateCaseDto } from "./dto/case.dto";
 import { Param } from '@nestjs/common';
-
+import { CaseDto } from './dto/case2.dto';
 @Controller('simulation')
 export class SimulationController{
     constructor (private readonly simulationService:SimulationService) {}
 
     @Post('/case/create')
     @UsePipes(new ValidationPipe({ whitelist: true }))
-    async createCase(@Body() createCaseDto: CreateCaseDto): Promise<Case> {
+    async createCase(@Body() createCaseDto: CaseDto): Promise<Case> {
       return this.simulationService.createCase(createCaseDto);
     }
 

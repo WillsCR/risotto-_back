@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
-import { Case,CaseSchema } from "./schema/case.scheme";
+import { Case, CaseSchema } from "./schema/case2.schema";
 import { SimulationService } from "./simulation.service";
 import { SimulationController } from "./simulation.controller";
 
 @Module({
-    imports: [MongooseModule.forFeature([{name: Case.name , schema:CaseSchema}])],
+    imports: [MongooseModule.forFeature([{name: Case.name , schema:CaseSchema},])],
     controllers:[SimulationController],
     providers:[SimulationService],
     exports:[SimulationService]

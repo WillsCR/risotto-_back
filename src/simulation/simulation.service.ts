@@ -4,6 +4,7 @@ import { Model } from "mongoose";
 import { Types } from 'mongoose';
 import { Case,CaseDocument } from "./schema/case.scheme";
 import { CreateCaseDto } from "./dto/case.dto";
+import { CaseDto } from "./dto/case2.dto";
 
 @Injectable()
 export class SimulationService{
@@ -13,7 +14,7 @@ export class SimulationService{
         return this.caseModel.find().exec();
     }
     //Validar esta parte
-    async createCase(createCaseDto: CreateCaseDto): Promise<Case> {
+    async createCase(createCaseDto: CaseDto): Promise<Case> {
         const createdCase = new this.caseModel(createCaseDto);
         return createdCase.save();
         
