@@ -80,7 +80,7 @@ export class Case {
   contexto_inicial: ContextoInicial;
 
   @Prop({ type: [InterraccionSchema], required: true })
-  npcs: Interraccion[];
+  interacciones: Interraccion[];
 
   @Prop({ required: true })
   informacion_final_caso: string;
