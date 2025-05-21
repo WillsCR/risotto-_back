@@ -34,6 +34,9 @@ export class InterraccionDto {
   @ValidateNested({ each: true })
   @Type(() => PreguntaDto)
   preguntas: PreguntaDto[];
+
+
+  
 }
 
 export class InformacionPacienteDto {
@@ -80,7 +83,7 @@ export class CaseDto {
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => InterraccionDto)
-  npcs: InterraccionDto[];
+  interacciones: InterraccionDto[];
 
   @IsString()
   informacion_final_caso: string;
