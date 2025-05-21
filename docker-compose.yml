@@ -1,0 +1,33 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: miappdb
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./
+      dockerfile: DockerFile
+    image: risotto-backend:latest
+    container_name: backend-app
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+    env_file:
+      - ./.env  
+volumes:
+  mongo-data:
+
+networks:
+  app-network:
+    driver: bridge
