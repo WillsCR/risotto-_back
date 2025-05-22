@@ -6,7 +6,10 @@ export class OpcionDto {
   texto: string;
 
   @IsString()
-  respuestaAsociada: string;
+  @Type(() => OpcionesAsociadasDto)
+  OpcionesAsociadas: OpcionesAsociadasDto[];
+}
+export class OpcionesAsociadasDto {
 
   @IsBoolean()
   esCorrecta: boolean;
@@ -16,9 +19,9 @@ export class OpcionDto {
   consecuencia?: string;
 }
 
-export class PreguntaDto {
+export class RelatoDto {
   @IsString()
-  texto: string;
+  texto: string; 
 
   @IsArray()
   @ValidateNested({ each: true })
@@ -27,14 +30,18 @@ export class PreguntaDto {
 }
 
 export class InterraccionDto {
+
   @IsString()
   nombreNPC: string;
 
+  @IsString()
+  @IsOptional()
+  descripcion: string;  
+
   @IsArray()
   @ValidateNested({ each: true })
-  @Type(() => PreguntaDto)
-  preguntas: PreguntaDto[];
-
+  @Type(() => RelatoDto)
+  relatos: RelatoDto[];
 
   
 }
@@ -49,9 +56,9 @@ export class InformacionPacienteDto {
   @IsString()
   diagnostico_previo: string;
 
-  @IsOptional()
+  @IsArray()
   @IsString({ each: true })
-  diagnostico_actual?: string;
+  diagnostico_actual: string[];
 
   @IsOptional()
   @IsArray()
@@ -73,7 +80,7 @@ export class CaseDto {
   titulo: string;
 
   @IsString()
-  @Matches(/(APS|Urgencia|Hospitalario)/)
+  @Matches(/(APS|Urgencia|Hospitario)/)
   tipo_caso: string;
 
   @ValidateNested()

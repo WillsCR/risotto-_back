@@ -1,31 +1,35 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 @Schema()
+export class OpcionesAsociadas {
+  @Prop({ required: true })
+  esCorrecta: boolean;
+
+  @Prop()
+  consecuencia?: string;
+}
+export const OpcionesAsociadasSchema = SchemaFactory.createForClass(OpcionesAsociadas);
+
+@Schema()
 export class Opcion {
   @Prop({ required: true })
   texto: string;
 
-  @Prop({ required: true })
-  respuestaAsociada: string;
-
-  @Prop({ required: true })
-  esCorrecta: boolean;
-
-  @Prop({ required: false })
-  consecuencia?: string; // lo que ocurre si elige esta opción
+  @Prop({ type: [OpcionesAsociadasSchema], required: true })
+  OpcionesAsociadas: OpcionesAsociadas[];
 }
 export const OpcionSchema = SchemaFactory.createForClass(Opcion);
 
 
 @Schema()
-export class Pregunta {
+export class Relato {
   @Prop({ required: true })
-  texto: string; // ¿Qué decides hacer?
+  texto: string; 
 
   @Prop({ type: [OpcionSchema], required: true })
   opciones: Opcion[];
 }
-export const PreguntaSchema = SchemaFactory.createForClass(Pregunta);
+export const RelatoSchema = SchemaFactory.createForClass(Relato);
 
 
 @Schema()
@@ -33,8 +37,11 @@ export class Interraccion {
   @Prop({ required: true })
   nombreNPC: string;
 
-  @Prop({ type: [PreguntaSchema], required: true })
-  preguntas: Pregunta[];
+  @Prop({ required: false })
+  descripcion: string;
+
+  @Prop({ type: [RelatoSchema], required: true })
+  preguntas: Relato[];
 }
 export const InterraccionSchema = SchemaFactory.createForClass(Interraccion);
 
@@ -73,7 +80,7 @@ export class Case {
   @Prop({ required: true })
   titulo: string;
 
-  @Prop({ required: true, match: /(APS|Urgencia|Hospitalario)/ })
+  @Prop({ required: true, match: /(APS|Urgencia|Hospitario)/ })
   tipo_caso: string;
 
   @Prop({ type: ContextoInicialSchema, required: true })
