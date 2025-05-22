@@ -73,7 +73,7 @@ export class Case {
   @Prop({ required: true })
   titulo: string;
 
-  @Prop({ required: true, match: /(APS|Urgencia|Hospitario)/ })
+  @Prop({ required: true, match: /(APS|Urgencia|Hospitalario)/ })
   tipo_caso: string;
 
   @Prop({ type: ContextoInicialSchema, required: true })

@@ -49,9 +49,9 @@ export class InformacionPacienteDto {
   @IsString()
   diagnostico_previo: string;
 
-  @IsArray()
+  @IsOptional()
   @IsString({ each: true })
-  diagnostico_actual: string[];
+  diagnostico_actual?: string;
 
   @IsOptional()
   @IsArray()
@@ -73,7 +73,7 @@ export class CaseDto {
   titulo: string;
 
   @IsString()
-  @Matches(/(APS|Urgencia|Hospitario)/)
+  @Matches(/(APS|Urgencia|Hospitalario)/)
   tipo_caso: string;
 
   @ValidateNested()
