@@ -15,6 +15,9 @@ export class Opcion {
   @Prop({ required: true })
   texto: string;
 
+  @Prop({ required: false })
+  reaccion: string;
+
   @Prop({ type: [OpcionesAsociadasSchema], required: true })
   OpcionesAsociadas: OpcionesAsociadas[];
 }

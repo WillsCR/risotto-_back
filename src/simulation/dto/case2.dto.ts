@@ -6,6 +6,10 @@ export class OpcionDto {
   texto: string;
 
   @IsString()
+  @IsOptional()
+  reaccion?: string;
+
+  @IsString()
   @Type(() => OpcionesAsociadasDto)
   OpcionesAsociadas: OpcionesAsociadasDto[];
 }
@@ -22,6 +26,7 @@ export class OpcionesAsociadasDto {
 export class RelatoDto {
   @IsString()
   texto: string; 
+
 
   @IsArray()
   @ValidateNested({ each: true })
