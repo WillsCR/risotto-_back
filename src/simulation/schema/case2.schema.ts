@@ -16,24 +16,25 @@ export class Opcion {
   texto: string;
 
   @Prop({ required: false })
-  reaccion: string;
+  reaccion?: string;
 
   @Prop({ type: [OpcionesAsociadasSchema], required: true })
   OpcionesAsociadas: OpcionesAsociadas[];
 }
 export const OpcionSchema = SchemaFactory.createForClass(Opcion);
 
-
 @Schema()
 export class Relato {
   @Prop({ required: true })
-  texto: string; 
+  pregunta: string;
+
+  @Prop({ required: true })
+  texto: string;
 
   @Prop({ type: [OpcionSchema], required: true })
   opciones: Opcion[];
 }
 export const RelatoSchema = SchemaFactory.createForClass(Relato);
-
 
 @Schema()
 export class Interraccion {
@@ -41,7 +42,7 @@ export class Interraccion {
   nombreNPC: string;
 
   @Prop({ required: false })
-  descripcion: string;
+  descripcion?: string;
 
   @Prop({ type: [RelatoSchema], required: true })
   preguntas: Relato[];
@@ -66,7 +67,6 @@ export class InformacionPaciente {
   antecedentes_relevantes?: string[];
 }
 export const InformacionPacienteSchema = SchemaFactory.createForClass(InformacionPaciente);
-
 
 @Schema()
 export class ContextoInicial {

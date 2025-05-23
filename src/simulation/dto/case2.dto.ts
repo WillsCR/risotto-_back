@@ -1,20 +1,7 @@
 import { IsString, IsBoolean, IsOptional, IsArray, ValidateNested, IsNumber, Matches } from "class-validator";
 import { Type } from "class-transformer";
 
-export class OpcionDto {
-  @IsString()
-  texto: string;
-
-  @IsString()
-  @IsOptional()
-  reaccion?: string;
-
-  @IsString()
-  @Type(() => OpcionesAsociadasDto)
-  OpcionesAsociadas: OpcionesAsociadasDto[];
-}
 export class OpcionesAsociadasDto {
-
   @IsBoolean()
   esCorrecta: boolean;
 
@@ -23,10 +10,26 @@ export class OpcionesAsociadasDto {
   consecuencia?: string;
 }
 
+export class OpcionDto {
+  @IsString()
+  texto: string;
+
+  @IsOptional()
+  @IsString()
+  reaccion?: string;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => OpcionesAsociadasDto)
+  OpcionesAsociadas: OpcionesAsociadasDto[];
+}
+
 export class RelatoDto {
   @IsString()
-  texto: string; 
+  pregunta: string;  // La pregunta que el estudiante realiza
 
+  @IsString()
+  texto: string;  // Respuesta / relato del interlocutor
 
   @IsArray()
   @ValidateNested({ each: true })
@@ -35,20 +38,17 @@ export class RelatoDto {
 }
 
 export class InterraccionDto {
-
   @IsString()
   nombreNPC: string;
 
-  @IsString()
   @IsOptional()
-  descripcion: string;  
+  @IsString()
+  descripcion?: string;
 
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => RelatoDto)
-  relatos: RelatoDto[];
-
-  
+  preguntas: RelatoDto[];
 }
 
 export class InformacionPacienteDto {
