@@ -85,7 +85,7 @@ export class CaseDto {
   titulo: string;
 
   @IsString()
-  @Matches(/(APS|Urgencia|Hospitario)/)
+  @Matches(/(APS|Urgencia|Hospitalario)/)
   tipo_caso: string;
 
   @ValidateNested()
