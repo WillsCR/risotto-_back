@@ -23,4 +23,9 @@ export class SimulationController{
     async getCaseById(@Param('id') id: string): Promise<Case> {
         return this.simulationService.getCaseById(id);
     }
+
+    @Post('/case/update/:id')
+    async updateCase(@Param('id') id: string, @Body() updateCaseDto: CreateCaseDto): Promise<Case> {
+        return this.simulationService.updateCase(id, updateCaseDto);
+    }
 }

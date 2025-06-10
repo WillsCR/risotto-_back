@@ -1,6 +1,4 @@
-import { IsNotEmpty, IsString, useContainer } from "class-validator";
-
-
+import { isDate, IsNotEmpty, IsString, useContainer } from "class-validator";
 
 export class DiagnosticDto {   
 
@@ -17,5 +15,8 @@ export class DiagnosticDto {
     @IsNotEmpty()
     @IsString()
     case_info: string
+
+    @IsNotEmpty()
+    date: Date
 
 }

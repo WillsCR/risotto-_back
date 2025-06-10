@@ -1,8 +1,8 @@
-import { Controller, Post, Body, UsePipes } from "@nestjs/common";
+import { Controller, Post, Body, UsePipes, Param, Get, Res } from "@nestjs/common";
 import { DiagnosticService } from "./diagnostic.service";
 import { DiagnosticDto } from "./dto/diagnostic.dto";
 import { Diagnostic } from "./schema/diagnostic.schema";
-
+import { Response } from "express";
 
 @Controller('diagnostic')
 export class DiagnosticController {
@@ -14,4 +14,11 @@ export class DiagnosticController {
         return this.diagnosticService.createDiagnostic(diagnosticDto);
     }
 
-}   
+    @Get('/:id')
+    async getDiagnostic(@Param('id') id: string): Promise<Diagnostic> {
+        return this.diagnosticService.findById(id);
+    }
+
+}
+
+

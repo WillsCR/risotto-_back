@@ -19,6 +19,9 @@ export class Diagnostic {
 
     @Prop({required:true}) 
     case_info: string
+
+    @Prop({required:true, type: Date, default: Date.now})
+    date: Date;
 }
 
 export const DiagnosticSchema = SchemaFactory.createForClass(Diagnostic);

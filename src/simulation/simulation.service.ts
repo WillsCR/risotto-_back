@@ -26,4 +26,17 @@ export class SimulationService{
           return this.caseModel.findById(id);
           
     }
+
+
+    async updateCase(id: string, updateCaseDto: CreateCaseDto): Promise<Case> {
+        if (!Types.ObjectId.isValid(id)) {
+            throw new Error('ID inválido');
+        }
+        const updatedCase = await this.caseModel.findByIdAndUpdate(id, updateCaseDto, { new: true });
+        if (!updatedCase) {
+            throw new Error('Caso no encontrado');
+        }
+        return updatedCase;
+    }
+
 }
