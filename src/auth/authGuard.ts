@@ -8,6 +8,7 @@ export class GoogleAuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = request.headers['authorization']?.split(' ')[1]; 
+   
 
     if (!token) {
       throw new UnauthorizedException('No se proporcionó un token');
@@ -23,8 +24,6 @@ export class GoogleAuthGuard implements CanActivate {
       if (!payload) {
         throw new UnauthorizedException('Token inválido');
       }
-
-      
       const allowedDomains = ['alumnos.ucn.cl', 'ucn.cl', 'ce.ucn.cl'];
       const emailDomain = payload.email?.split('@')[1];
       if (!allowedDomains.includes(emailDomain)) {
@@ -34,9 +33,9 @@ export class GoogleAuthGuard implements CanActivate {
         email: payload.email,
         name: payload.name,
       };
-
       return true;
     } catch (error) {
+      console.error('Google Token Verification Error:', error);
       throw new UnauthorizedException('Token inválido o expirado');
     }
   }

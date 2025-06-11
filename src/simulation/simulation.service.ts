@@ -24,10 +24,7 @@ export class SimulationService{
             throw new Error('ID inválido');
           }
           return this.caseModel.findById(id);
-          
-    }
-
-
+    }    
     async updateCase(id: string, updateCaseDto: CreateCaseDto): Promise<Case> {
         if (!Types.ObjectId.isValid(id)) {
             throw new Error('ID inválido');
