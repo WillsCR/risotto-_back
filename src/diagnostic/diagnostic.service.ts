@@ -27,5 +27,15 @@ export class DiagnosticService {
         return this.diagnosticModel.findById(id).exec();
   }
   
+  async findAll(): Promise<Diagnostic[]> {
+    return this.diagnosticModel.find().populate('case_id').exec();
+  }
+
+  async deleteDiagnostic(id: string): Promise<any> {
+    return this.diagnosticModel.findByIdAndDelete(id).exec();
+  }
+
+
+
 }
 

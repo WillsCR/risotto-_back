@@ -3,14 +3,11 @@ import { isDate, IsNotEmpty, IsString, useContainer } from "class-validator";
 export class DiagnosticDto {   
 
     @IsNotEmpty()
-    user_id: string
-
-    @IsNotEmpty()
     case_id: string
 
     @IsNotEmpty()
     @IsString()
-    diagnostic: string
+    user_name: string
 
     @IsNotEmpty()
     @IsString()
