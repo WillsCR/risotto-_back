@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UsePipes, Param, Get, Res } from "@nestjs/common";
+import { Controller, Post, Body, UsePipes, Param, Get, Res, Delete } from "@nestjs/common";
 import { DiagnosticService } from "./diagnostic.service";
 import { DiagnosticDto } from "./dto/diagnostic.dto";
 import { Diagnostic } from "./schema/diagnostic.schema";
@@ -18,6 +18,17 @@ export class DiagnosticController {
     async getDiagnostic(@Param('id') id: string): Promise<Diagnostic> {
         return this.diagnosticService.findById(id);
     }
+
+    @Get()
+    async getAll(): Promise<Diagnostic[]> {
+        return this.diagnosticService.findAll();
+    }
+
+    @Delete(':id')
+    async deleteDiagnostic(@Param('id') id: string): Promise<any> {
+     return this.diagnosticService.deleteDiagnostic(id);
+    }
+
 
 }
 

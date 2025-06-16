@@ -3,7 +3,6 @@ import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Types } from 'mongoose';
 import { Case,CaseDocument } from "./schema/case.scheme";
-import { CreateCaseDto } from "./dto/case.dto";
 import { CaseDto } from "./dto/case2.dto";
 
 @Injectable()
@@ -25,7 +24,7 @@ export class SimulationService{
           }
           return this.caseModel.findById(id);
     }    
-    async updateCase(id: string, updateCaseDto: CreateCaseDto): Promise<Case> {
+    async updateCase(id: string, updateCaseDto: CaseDto): Promise<Case> {
         if (!Types.ObjectId.isValid(id)) {
             throw new Error('ID inválido');
         }
