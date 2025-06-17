@@ -6,7 +6,7 @@ import { CaseDto } from './dto/case2.dto';
 import { GoogleAuthGuard } from 'src/auth/authGuard';
 import { isValidObjectId } from 'mongoose';
 
-//@UseGuards(GoogleAuthGuard)
+@UseGuards(GoogleAuthGuard)
 @Controller('simulation')
 export class SimulationController{
     constructor (private readonly simulationService:SimulationService) {}

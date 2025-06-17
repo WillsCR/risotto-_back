@@ -1,9 +1,11 @@
-import { Controller, Post, Body, UsePipes, Param, Get, Res, Delete } from "@nestjs/common";
+import { Controller, Post, Body, UsePipes, Param, Get, Res, Delete, UseGuards } from "@nestjs/common";
 import { DiagnosticService } from "./diagnostic.service";
 import { DiagnosticDto } from "./dto/diagnostic.dto";
 import { Diagnostic } from "./schema/diagnostic.schema";
 import { Response } from "express";
+import { GoogleAuthGuard } from "src/auth/authGuard";
 
+//UseGuards(GoogleAuthGuard)
 @Controller('diagnostic')
 export class DiagnosticController {
     constructor(private readonly diagnosticService: DiagnosticService) {}
