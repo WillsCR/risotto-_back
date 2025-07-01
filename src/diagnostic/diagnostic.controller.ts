@@ -5,7 +5,7 @@ import { Diagnostic } from "./schema/diagnostic.schema";
 import { Response } from "express";
 import { GoogleAuthGuard } from "src/auth/authGuard";
 
-//UseGuards(GoogleAuthGuard)
+UseGuards(GoogleAuthGuard)
 @Controller('diagnostic')
 export class DiagnosticController {
     constructor(private readonly diagnosticService: DiagnosticService) {}
