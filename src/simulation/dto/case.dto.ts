@@ -158,7 +158,9 @@ export class CreateCaseDto {
   @Type(() => InteraccionDto)
   interacciones: InteraccionDto[];
 
+  /*
   @IsNotEmpty()
   @IsString()
-  informacion_final_caso: string;
+  informacion_final_caso: string; no se usa esto
+  */
 }

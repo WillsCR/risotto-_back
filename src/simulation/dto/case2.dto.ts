@@ -97,6 +97,9 @@ export class CaseDto {
   @Type(() => InterraccionDto)
   interacciones: InterraccionDto[];
 
+  /*
   @IsString()
-  informacion_final_caso: string;
+  @IsOptional()
+  informacion_final_caso?: string; no se usa esto 
+  */
 }
