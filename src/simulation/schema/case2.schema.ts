@@ -92,7 +92,9 @@ export class Case {
   @Prop({ type: [InterraccionSchema], required: true })
   interacciones: Interraccion[];
 
+  /*
   @Prop({ required: true })
-  informacion_final_caso: string;
+  informacion_final_caso: string; no se usa esto
+  */
 }
 export const CaseSchema = SchemaFactory.createForClass(Case);
