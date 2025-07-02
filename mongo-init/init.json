@@ -1,0 +1,258 @@
+[
+  {
+    "titulo": "Caso clínico interactivo de dificultad respiratoria",
+    "tipo_caso": "Urgencia",
+    "contexto_inicial": {
+      "descripcion": "Paciente femenino de 70 años con antecedentes de ACV y problemas respiratorios recientes.",
+      "informacion_paciente": {
+        "nombre": "María González",
+        "edad": 70,
+        "diagnostico_previo": "ACV isquémico y EPOC leve",
+        "diagnostico_actual": [
+          "Dificultad respiratoria aguda",
+          "Probable neumonía"
+        ],
+        "antecedentes_relevantes": [
+          "ACV hace 2 años",
+          "Fumadora ex"
+        ]
+      }
+    },
+    "interacciones": [
+      {
+        "nombreNPC": "Hija",
+        "descripcion": "La hija del paciente, preocupada por el estado de su madre.",
+        "preguntas": [
+          {
+            "pregunta": "¿Qué antecedentes relevantes puedes aportar?",
+            "texto": "Desde hace 3 días tiene dificultad para respirar y tos con esputo.",
+            "opciones": [
+              {
+                "texto": "Sugiere una infección respiratoria aguda.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "La información es relevante para el diagnóstico."
+                  }
+                ]
+              },
+              {
+                "texto": "Ignorar estos síntomas y no actuar.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": false,
+                    "consecuencia": "Esto podría empeorar la condición del paciente."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Qué medicamentos toma su madre?",
+            "texto": "Broncodilatadores y anticoagulantes prescritos.",
+            "opciones": [
+              {
+                "texto": "Información vital para evitar interacciones medicamentosas.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Se garantiza un manejo adecuado."
+                  }
+                ]
+              },
+              {
+                "texto": "No considerar los medicamentos actuales.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": false,
+                    "consecuencia": "Podría generar complicaciones."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Ha presentado fiebre o decaimiento?",
+            "texto": "Ha presentado fiebre y decaimiento progresivo.",
+            "opciones": [
+              {
+                "texto": "Indica posible proceso infeccioso activo.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Se debe evaluar para tratamiento oportuno."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Ha tenido dificultad para tragar?",
+            "texto": "Ha tenido dificultad para tragar líquidos y sólidos.",
+            "opciones": [
+              {
+                "texto": "Sugiere disfagia post ACV.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Se debe evitar riesgo de aspiración."
+                  }
+                ]
+              },
+              {
+                "texto": "La alimentación ha sido normal.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": false,
+                    "consecuencia": "Contradice síntomas reportados."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nombreNPC": "TENS",
+        "descripcion": "Técnico en enfermería que asistió al paciente.",
+        "preguntas": [
+          {
+            "pregunta": "¿Qué acciones iniciales realizaste con el paciente?",
+            "texto": "Administración inmediata de oxígeno y monitorización.",
+            "opciones": [
+              {
+                "texto": "Mejora inicial en saturación de oxígeno.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Paciente estabilizado momentáneamente."
+                  }
+                ]
+              },
+              {
+                "texto": "Esperar indicaciones médicas sin intervenir.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": false,
+                    "consecuencia": "Empeoramiento del estado clínico."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Cómo describirías el estado respiratorio del paciente?",
+            "texto": "Dificultad respiratoria severa, tos productiva, saturación 85%.",
+            "opciones": [
+              {
+                "texto": "Requiere manejo urgente y evaluación médica.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Atención prioritaria."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Qué signos vitales registraste?",
+            "texto": "PA 140/90, FC 110, FR 30, SatO2 85%.",
+            "opciones": [
+              {
+                "texto": "Datos útiles para monitoreo continuo.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Seguimiento adecuado de signos vitales."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Qué tratamiento administraste?",
+            "texto": "Nebulizaciones y broncodilatadores según protocolo.",
+            "opciones": [
+              {
+                "texto": "Mejora clínica progresiva observada.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Respuesta positiva al tratamiento."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nombreNPC": "Enfermera",
+        "descripcion": "Enfermera encargada del cuidado durante la emergencia.",
+        "preguntas": [
+          {
+            "pregunta": "¿Cómo describirías el estado general del paciente?",
+            "texto": "Paciente consciente pero agitado, con uso de musculatura accesoria.",
+            "opciones": [
+              {
+                "texto": "Indica compromiso respiratorio significativo.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Se requiere intervención inmediata."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Qué medidas de soporte se han implementado?",
+            "texto": "Administración de oxígeno y suero intravenoso.",
+            "opciones": [
+              {
+                "texto": "Mantiene hidratación y oxigenación.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Mejora estado general."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Cómo es el reporte del paciente?",
+            "texto": "Reporte detallado y continuo del estado del paciente.",
+            "opciones": [
+              {
+                "texto": "Facilitó intervenciones oportunas.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Colaboración efectiva del equipo."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "pregunta": "¿Qué se ha decidido sobre el ingreso hospitalario?",
+            "texto": "Observación estrecha y posible ingreso hospitalario.",
+            "opciones": [
+              {
+                "texto": "Decisión adecuada para seguimiento.",
+                "OpcionesAsociadas": [
+                  {
+                    "esCorrecta": true,
+                    "consecuencia": "Paciente en monitoreo continuo."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
